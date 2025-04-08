@@ -1,0 +1,24 @@
+name: Automated Test Lowest Number Finder
+on: [push]
+jobs:
+  automated_test:
+    name: Automated Test Lowest Number Finder
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Find lowest number in test1
+        run: python find_lowest_number.py test_data/test1_input.txt test_data/test1_lowest_number.txt
+      - name: Compare test1 output actual to expected
+        run: diff test_data/test1_lowest_number.txt test_data/test1_expected.txt
+      - name: Find lowest number in test2
+        run: python find_lowest_number.py test_data/test2_input.txt test_data/test2_lowest_number.txt
+      - name: Compare test2 output actual to expected
+        run: diff test_data/test2_lowest_number.txt test_data/test2_expected.txt
+      - name: Find lowest number in test3
+        run: python find_lowest_number.py test_data/test3_input.txt test_data/test3_lowest_number.txt
+      - name: Compare test3 output actual to expected
+        run: diff test_data/test3_lowest_number.txt test_data/test3_expected.txt
